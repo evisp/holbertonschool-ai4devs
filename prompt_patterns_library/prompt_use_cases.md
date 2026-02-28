@@ -1,6 +1,7 @@
 # Prompt Use Cases
 
 ## Category 1: Code Quality
+
 - **Use Case: Refactoring for readability**
   - **Goal**: Improve maintainability and clarity without changing external behavior.
   - **Input**: A code snippet (function/class/module) in [LANGUAGE], plus a short note describing expected behavior and any constraints (public API must remain stable).
@@ -17,6 +18,7 @@
   - **Expected output**: A list of concrete vulnerabilities found, patched code changes, and recommended mitigations (validation, escaping, headers, secrets handling).
 
 ## Category 2: Debugging
+
 - **Use Case: Root-cause analysis**
   - **Goal**: Determine the most likely cause of a bug and propose a fix.
   - **Input**: Symptom description, exact steps to reproduce, environment details (OS/runtime/version), and error logs/stack traces.
@@ -33,6 +35,7 @@
   - **Expected output**: Immediate mitigation options (rollback, feature flag off, rate limiting, timeouts), with risks, and a follow-up plan for permanent prevention.
 
 ## Category 3: Architecture & Design
+
 - **Use Case: Architecture Decision Record (ADR)**
   - **Goal**: Decide between architectural options and document the decision.
   - **Input**: Functional requirements, non-functional requirements (performance/scalability/security), constraints (budget/timeline/stack), and the candidate options.
@@ -49,6 +52,7 @@
   - **Expected output**: API definition (endpoints or schema), example requests/responses, and an error-handling strategy (status codes, error shapes).
 
 ## Category 4: Testing & QA
+
 - **Use Case: Test strategy creation**
   - **Goal**: Ensure appropriate coverage across unit, integration, and end-to-end tests.
   - **Input**: Component description, critical user flows, dependencies (DB/services), and release risk level (low/medium/high).
@@ -65,6 +69,7 @@
   - **Expected output**: One or more automated regression tests (in the project’s test framework) with clear assertions and notes for CI integration.
 
 ## Category 5: Documentation
+
 - **Use Case: Developer documentation drafting**
   - **Goal**: Produce onboarding-ready docs that engineers can follow end-to-end.
   - **Input**: System overview, prerequisites (runtime/tools), setup steps, environment variables, and common workflows.
