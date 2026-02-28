@@ -88,12 +88,24 @@ for (int i = 0; i < n; i++) sum += arr[i];
 
 
 
-## Bug 1 – bug5.py
-**AI Diagnosis**: `data` is a JSON *string*, not a Python dict, so `data["name"]` tries to index a string with another string and raises `TypeError: string indices must be integers`.  
-**Suggested Fix**: Parse first, then index the resulting dict:
+## Bug 5 – bug5.py
+**AI Diagnosis**: The script misuses types in three places: it treats the JSON text `data` as a dict (`data["name"]` causes `TypeError: string indices must be integers`), it adds an `int` to a `str` (`age + "5"` causes `TypeError`), and it calls `.split()` on a list (`numbers.split(",")` causes `AttributeError` because `split` is a string method).  
+**Suggested Fix**: Parse JSON before indexing, keep arithmetic numeric (or convert explicitly), and only call `split` on strings:
 ```py
+import json
+
+data = '{"name": "Alice", "age": 30}'
+
 parsed = json.loads(data)
 print(parsed["name"])
+
+age = parsed["age"]
+new_age = age + 5          # or: str(age) + "5" if you meant concatenation
+print("New age:", new_age)
+
+numbers = "1,2,3,4"
+result = numbers.split(",")  # or if you keep a list: ",".join(map(str, [1,2,3,4]))
+print(result)
 ```
-**Alternative Fixes Tested**: None.  
-**Result**: `"Alice"` prints correctly.
+**Alternative Fixes Tested**: Use `parsed.get("name")` for safe lookup; use `",".join(map(str, numbers))` if you want a comma-separated string from the list.  
+**Result**: Code runs without exceptions; prints `Alice`, then `New age: 35` (with numeric fix), and `['1', '2', '3', '4']` (with split-on-string fix).
