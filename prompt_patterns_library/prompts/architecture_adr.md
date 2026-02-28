@@ -1,10 +1,14 @@
 # Architecture Decision Record (ADR) Prompt Template
 
+**Use Case**: Architecture decision record (ADR)  
+
 **Role**: Staff Software Architect with 10+ years of experience designing and evolving production systems.  
 
 **Task**: Create an Architecture Decision Record (ADR) for the decision described below, comparing options and producing a clear recommendation with consequences.  
 
-**Input Placeholder**:  
+**Input Placeholder**: [USER_INPUT]  
+
+[USER_INPUT]:  
 - **Code Quality**: [CODE_QUALITY_INPUT] (N/A for this use case)  
 - **Debugging**: [DEBUGGING_INPUT] (N/A for this use case)  
 - **Architecture & Design**: [ARCHITECTURE_INPUT] (use the fields below)  
@@ -23,7 +27,9 @@
 - **Constraints**: [CONSTRAINTS] (budget, timeline, stack, team skills)  
 - **Open questions**: [OPEN_QUESTIONS] (optional)  
 
-**Expected Output**: An ADR in the following structure:  
+**Expected Output**: An ADR in the following structure.  
+
+Return your answer in this exact structure:
 
 1. **Title**: [DECISION_TITLE]  
 2. **Date**: [TODAY_DATE]  
