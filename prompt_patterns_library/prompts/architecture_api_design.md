@@ -5,19 +5,24 @@
 **Task Description**: Design a RESTful API for the described domain, including resources, endpoints, authentication, error model, versioning, and operational considerations.
 
 ## Input Placeholder
+Provide the following inputs (use placeholders if unknown):
+
 - **Domain**: [DOMAIN_DESCRIPTION]
+- **Primary users/clients**: [CLIENT_TYPES] (web app, mobile, partners, internal services)
 - **Core resources/entities**: [RESOURCES] (e.g., User, Order, Product)
 - **Operations**: [OPERATIONS] (CRUD + custom actions)
-- **Authentication/Authorization**: [AUTH_MODEL] (JWT/OAuth2/keys; roles/scopes)
+- **AuthN/AuthZ model**: [AUTH_MODEL] (JWT/OAuth2/keys; roles/scopes/tenancy)
+- **Data ownership rules**: [OWNERSHIP_RULES] (who can read/write which resources)
 - **Performance targets**: [PERFORMANCE_TARGETS] (RPS, p95 latency, SLA)
 - **Constraints**: [CONSTRAINTS] (naming conventions, stack, backward compatibility)
 - **Pagination/sorting/filtering needs**: [QUERY_CAPABILITIES]
-- **Versioning strategy preference**: [VERSIONING_PREFERENCE] (path/header/media-type)
+- **Idempotency needs**: [IDEMPOTENCY_REQUIREMENTS] (which operations need it)
+- **Versioning preference**: [VERSIONING_PREFERENCE] (path/header/media-type)
 
 ## Expected Output Format
 Return your answer in this exact structure:
 
-1. **Assumptions**: Bullet list (explicitly state any missing info you assumed).
+1. **Assumptions**: Bullet list (explicitly state missing info you assumed).
 2. **Resource model**: List resources and relationships (IDs, ownership, lifecycle).
 3. **Endpoints**: Markdown table with Method, Path, Description, Auth, Notes.
 4. **Request/Response examples**: For 3–5 key endpoints, show JSON examples.
