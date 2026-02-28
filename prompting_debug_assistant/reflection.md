@@ -5,8 +5,8 @@ This project explored AI-assisted debugging by fixing five intentionally buggy p
 
 I treated each fix as a claim that must be proven:
 
->> “A change that compiles is not automatically a fix.”  
->> “A fix that passes one example can still be wrong.”
+- “A change that compiles is not automatically a fix.”  
+- “A fix that passes one example can still be wrong.”
 
 That mindset mattered because the easiest bugs were the ones with a single canonical correction, while the hardest ones required interpreting the developer’s intent.
 
@@ -51,6 +51,6 @@ At the same time, AI has clear limits. It does not inherently “understand” t
 ## Conclusion
 AI made this debugging workflow faster overall for common defect patterns (syntax, off-by-one, inverted logic) because it reduced time spent on routine diagnosis. The hardest cases were not “difficult bugs” in the algorithmic sense; they were **unclear intent** cases where multiple fixes were possible. The main lesson is that AI is a strong assistant for mechanics and pattern recognition, while humans remain responsible for specification, risk management, and verification.
 
->> AI is the accelerator.  
->> Tests are the steering wheel.  
->> Human judgment decides the destination.
+- AI is the accelerator.  
+- Tests are the steering wheel.  
+- Human judgment decides the destination.
