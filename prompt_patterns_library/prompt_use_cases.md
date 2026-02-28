@@ -20,7 +20,7 @@
 - **Use Case: Root-cause analysis**
   - **Goal**: Determine why a bug occurs and how to reproduce it reliably
   - **Input**: Symptom description + environment + repro steps + logs/traces
-  - **Expected output**: Ranked root-cause hypotheses + confirmed cause (if possible) + fix plan
+  - **Expected output**: Ranked root-cause hypotheses + most likely cause + fix plan
 
 - **Use Case: Log/trace interpretation**
   - **Goal**: Convert noisy logs into actionable next checks
@@ -30,7 +30,7 @@
 - **Use Case: Incident mitigation**
   - **Goal**: Stabilize a degraded system quickly while preserving correctness
   - **Input**: Current symptoms + SLO/SLA targets + architecture overview
-  - **Expected output**: Immediate mitigations (timeouts/retries/fallbacks) + rollback guidance + follow-up actions
+  - **Expected output**: Immediate mitigations + rollback guidance + follow-up actions
 
 ## Category 3: Architecture & Design
 - **Use Case: Architecture decision record (ADR)**
@@ -79,3 +79,8 @@
   - **Goal**: Summarize changes clearly for users and stakeholders
   - **Input**: PR/commit list + feature flags + breaking changes + known issues
   - **Expected output**: Release notes with highlights, fixes, breaking changes, and upgrade steps
+
+- **Use Case: API reference generation**
+  - **Goal**: Produce a precise API reference that matches implementation
+  - **Input**: Source code annotations (or OpenAPI draft) + endpoint list + auth details
+  - **Expected output**: API reference section with endpoints, parameters, examples, and common errors
