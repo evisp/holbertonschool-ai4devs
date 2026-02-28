@@ -1,10 +1,17 @@
 # Root-Cause Analysis Prompt Template
 
-**Role / Perspective**: Act as a Senior Debugging Engineer with 8+ years of experience diagnosing complex production issues.
+**Role**: Act as a Senior Debugging Engineer with 8+ years of experience diagnosing complex production issues.
 
-**Task Description**: Determine the most likely root cause of the reported issue, propose an immediate fix, and specify how to verify the fix reliably.
+**Task**: Determine the most likely root cause of the reported issue, propose an immediate fix, and specify how to verify the fix reliably.
 
-## Input Placeholder
+**Input Placeholder**:
+- **Code Quality**: [CODE_QUALITY_INPUT] (N/A for this use case)
+- **Debugging**: [DEBUGGING_INPUT] (use the fields below)
+- **Architecture & Design**: [ARCHITECTURE_INPUT] (optional: include architecture notes if available)
+- **Testing & QA**: [TESTING_INPUT] (optional: include failing tests if available)
+- **Documentation**: [DOCUMENTATION_INPUT] (N/A for this use case)
+
+[DEBUGGING_INPUT]:
 - **Problem / Symptoms**: [SYMPTOMS]
 - **Reproduction Steps**: [REPRO_STEPS]
 - **Environment**: [ENVIRONMENT] (OS, runtime versions, deployment type)
@@ -12,7 +19,14 @@
 - **Recent Changes**: [RECENT_CHANGES]
 - **Related Components**: [RELATED_COMPONENTS] (services, DBs, queues, third-party APIs)
 
-## Expected Output Format
+[ARCHITECTURE_INPUT] (optional):
+- **Architecture notes**: [ARCHITECTURE_NOTES] (service graph, dependencies, deployment topology)
+
+[TESTING_INPUT] (optional):
+- **Failing tests**: [FAILING_TESTS]
+- **Last known good**: [LAST_KNOWN_GOOD] (commit/build/deploy)
+
+**Expected Output Format**:
 Return your answer in this exact structure:
 
 1. **Clarifying questions (optional)**: Ask only if required to proceed.

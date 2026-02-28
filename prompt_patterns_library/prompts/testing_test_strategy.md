@@ -1,10 +1,17 @@
 # Test Strategy Creation Prompt Template
 
-**Role / Perspective**: Act as a QA Lead / Test Architect with 8+ years of experience designing test strategies for production software.
+**Role**: Act as a QA Lead / Test Architect with 8+ years of experience designing test strategies for production software.
 
-**Task Description**: Create a comprehensive test strategy for the described component/system, covering unit, integration, end-to-end, and performance testing, with tools and CI/CD integration guidance.
+**Task**: Create a comprehensive test strategy for the described component/system, covering unit, integration, end-to-end, and performance testing, with tools and CI/CD integration guidance.
 
-## Input Placeholder
+**Input Placeholder**:
+- **Code Quality**: [CODE_QUALITY_INPUT] (N/A for this use case)
+- **Debugging**: [DEBUGGING_INPUT] (N/A for this use case)
+- **Architecture & Design**: [ARCHITECTURE_INPUT] (optional: include architecture notes if available)
+- **Testing & QA**: [TESTING_INPUT] (use the fields below)
+- **Documentation**: [DOCUMENTATION_INPUT] (N/A for this use case)
+
+[TESTING_INPUT]:
 - **Component/System**: [COMPONENT_NAME]
 - **Description**: [COMPONENT_DESCRIPTION]
 - **Critical user flows**: [CRITICAL_FLOWS]
@@ -13,7 +20,10 @@
 - **Environments**: [ENVIRONMENTS] (local, CI, staging, prod)
 - **Constraints**: [CONSTRAINTS] (timeline, tooling, team skills)
 
-## Expected Output Format
+[ARCHITECTURE_INPUT] (optional):
+- **Architecture notes**: [ARCHITECTURE_NOTES] (service boundaries, DBs, external integrations)
+
+**Expected Output Format**:
 Return your answer in this exact structure:
 
 1. **Scope & goals**: What is in-scope/out-of-scope and the quality goals.

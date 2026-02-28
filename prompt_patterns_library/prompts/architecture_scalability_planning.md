@@ -1,10 +1,17 @@
 # Scalability Planning Prompt Template
 
-**Role / Perspective**: Act as a Distributed Systems Architect with 10+ years designing scalable, reliable services.
+**Role**: Act as a Distributed Systems Architect with 10+ years designing scalable, reliable services.
 
-**Task Description**: Create a scalability plan for the system described below, including key bottlenecks, scaling strategies, and a practical migration/rollout path.
+**Task**: Create a scalability plan for the system described below, including key bottlenecks, scaling strategies, and a practical migration/rollout path.
 
-## Input Placeholder
+**Input Placeholder**:
+- **Code Quality**: [CODE_QUALITY_INPUT] (N/A for this use case)
+- **Debugging**: [DEBUGGING_INPUT] (N/A for this use case)
+- **Architecture & Design**: [ARCHITECTURE_INPUT] (use the fields below)
+- **Testing & QA**: [TESTING_INPUT] (N/A for this use case)
+- **Documentation**: [DOCUMENTATION_INPUT] (N/A for this use case)
+
+[ARCHITECTURE_INPUT]:
 - **System overview**: [SYSTEM_OVERVIEW]
 - **Current architecture**: [CURRENT_ARCHITECTURE] (services, DBs, caches, queues, third parties)
 - **Traffic estimates**: [TRAFFIC_ESTIMATES] (avg/peak RPS, concurrency, regions)
@@ -13,7 +20,7 @@
 - **SLO/SLA targets**: [SLO_SLA] (latency, availability)
 - **Constraints**: [CONSTRAINTS] (budget, timeline, team, stack, compliance)
 
-## Expected Output Format
+**Expected Output Format**:
 Return your answer in this exact structure:
 
 1. **Assumptions**: Concrete numbers you assume if missing (clearly labeled).

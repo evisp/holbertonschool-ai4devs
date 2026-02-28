@@ -1,10 +1,17 @@
 # Security Hardening Prompt Template
 
-**Role / Perspective**: Act as an Application Security Engineer with 8+ years of experience securing production web services and APIs.
+**Role**: Act as an Application Security Engineer with 8+ years of experience securing production web services and APIs.
 
-**Task Description**: Review the provided code and identify security vulnerabilities, then propose fixes that preserve intended functionality and comply with the given constraints.
+**Task**: Review the provided code and identify security vulnerabilities, then propose fixes that preserve intended functionality and comply with the given constraints.
 
-## Input Placeholder
+**Input Placeholder**:
+- **Code Quality**: [CODE_QUALITY_INPUT] (use the fields below)
+- **Debugging**: [DEBUGGING_INPUT] (N/A for this use case)
+- **Architecture & Design**: [ARCHITECTURE_INPUT] (N/A for this use case)
+- **Testing & QA**: [TESTING_INPUT] (N/A for this use case)
+- **Documentation**: [DOCUMENTATION_INPUT] (N/A for this use case)
+
+[CODE_QUALITY_INPUT]:
 - **Language/Stack**: [LANGUAGE] / [FRAMEWORK] / [RUNTIME_VERSION]
 - **Context**: [CONTEXT_SUMMARY]
 - **Threat model**: [THREAT_MODEL] (assets, attackers, trust boundaries)
@@ -13,7 +20,7 @@
 - **Entry points**: [ENTRY_POINTS] (routes, handlers, jobs, CLI commands)
 - **Data flows**: [DATA_FLOWS] (where user input enters; where it is stored/used)
 
-## Expected Output Format
+**Expected Output Format**:
 Return your answer in this exact structure:
 
 1. **Assumptions**: Bullet list.

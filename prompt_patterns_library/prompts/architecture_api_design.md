@@ -1,12 +1,17 @@
 # API Design Prompt Template
 
-**Role / Perspective**: Act as an API Architect with 10+ years of experience designing production-grade REST APIs.
+**Role**: Act as an API Architect with 10+ years of experience designing production-grade REST APIs.
 
-**Task Description**: Design a RESTful API for the described domain, including resources, endpoints, authentication, error model, versioning, and operational considerations.
+**Task**: Design a RESTful API for the described domain, including resources, endpoints, authentication, error model, versioning, and operational considerations.
 
-## Input Placeholder
-Provide the following inputs (use placeholders if unknown):
+**Input Placeholder**:
+- **Code Quality**: [CODE_QUALITY_INPUT] (N/A for this use case)
+- **Debugging**: [DEBUGGING_INPUT] (N/A for this use case)
+- **Architecture & Design**: [ARCHITECTURE_INPUT] (use the fields below)
+- **Testing & QA**: [TESTING_INPUT] (N/A for this use case)
+- **Documentation**: [DOCUMENTATION_INPUT] (N/A for this use case)
 
+[ARCHITECTURE_INPUT]:
 - **Domain**: [DOMAIN_DESCRIPTION]
 - **Primary users/clients**: [CLIENT_TYPES] (web app, mobile, partners, internal services)
 - **Core resources/entities**: [RESOURCES] (e.g., User, Order, Product)
@@ -19,7 +24,7 @@ Provide the following inputs (use placeholders if unknown):
 - **Idempotency needs**: [IDEMPOTENCY_REQUIREMENTS] (which operations need it)
 - **Versioning preference**: [VERSIONING_PREFERENCE] (path/header/media-type)
 
-## Expected Output Format
+**Expected Output Format**:
 Return your answer in this exact structure:
 
 1. **Assumptions**: Bullet list (explicitly state missing info you assumed).

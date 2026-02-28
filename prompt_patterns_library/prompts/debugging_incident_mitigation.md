@@ -1,10 +1,17 @@
 # Incident Mitigation Prompt Template
 
-**Role / Perspective**: Act as an Incident Commander (SRE) with 8+ years of experience mitigating high-severity production incidents.
+**Role**: Act as an Incident Commander (SRE) with 8+ years of experience mitigating high-severity production incidents.
 
-**Task Description**: Triage the incident, propose the safest immediate mitigations to reduce user impact, and define a follow-up plan to prevent recurrence.
+**Task**: Triage the incident, propose the safest immediate mitigations to reduce user impact, and define a follow-up plan to prevent recurrence.
 
-## Input Placeholder
+**Input Placeholder**:
+- **Code Quality**: [CODE_QUALITY_INPUT] (N/A for this use case)
+- **Debugging**: [DEBUGGING_INPUT] (use the fields below)
+- **Architecture & Design**: [ARCHITECTURE_INPUT] (optional: include architecture notes if available)
+- **Testing & QA**: [TESTING_INPUT] (N/A for this use case)
+- **Documentation**: [DOCUMENTATION_INPUT] (N/A for this use case)
+
+[DEBUGGING_INPUT]:
 - **Incident summary**: [INCIDENT_SUMMARY]
 - **Severity / Impact**: [SEVERITY_AND_IMPACT] (users affected, error rate, latency, regions)
 - **Time window**: [TIME_WINDOW]
@@ -13,11 +20,14 @@
 - **Recent changes**: [RECENT_CHANGES] (deploys, config, feature flags, infra)
 - **Constraints**: [CONSTRAINTS] (e.g., cannot restart DB, no downtime window)
 
-## Expected Output Format
+[ARCHITECTURE_INPUT] (optional):
+- **Architecture notes**: [ARCHITECTURE_NOTES] (service graph, dependencies, failover options)
+
+**Expected Output Format**:
 Return your answer in this exact structure:
 
 1. **Triage**: What is failing, scope/blast radius, and the most likely component at fault.
-2. **Immediate mitigations (ranked)**: 3–7 actions (e.g., rollback, disable feature flag, traffic shift, rate limiting, scale up), each with:
+2. **Immediate mitigations (ranked)**: 3–7 actions (e.g., rollback, disable feature flag, traffic shift, rate limiting, scale up). For each action include:
    - **Action**
    - **Expected effect**
    - **Risk/side effects**
