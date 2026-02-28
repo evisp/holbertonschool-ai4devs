@@ -34,22 +34,26 @@
   - **Input**: Current symptoms (timeouts, error rate), service SLO/SLA targets, and a brief architecture summary (dependencies, databases, queues).
   - **Expected output**: Immediate mitigation options (rollback, feature flag off, rate limiting, timeouts), with risks, and a follow-up plan for permanent prevention.
 
-## Category 3: Architecture & Design
 
-- **Use Case: Architecture Decision Record (ADR)**
-  - **Goal**: Decide between architectural options and document the decision.
-  - **Input**: Functional requirements, non-functional requirements (performance/scalability/security), constraints (budget/timeline/stack), and the candidate options.
-  - **Expected output**: An ADR-style write-up: decision, alternatives, pros/cons, risks, and a clear rationale tied to requirements.
 
-- **Use Case: Scalability planning**
-  - **Goal**: Design how a system scales from current load to projected load.
-  - **Input**: Expected traffic (avg/peak), read/write ratio, data volume growth, and bottleneck suspects (DB, cache, external APIs).
-  - **Expected output**: A scaling plan (caching, partitioning, async queues, horizontal scaling), plus key assumptions and limits (what breaks first).
+## Category 3: Documentation
 
-- **Use Case: API design**
-  - **Goal**: Define a consistent, maintainable API for a domain.
-  - **Input**: Domain entities/resources, operations (CRUD + custom actions), authentication/authorization needs, and performance targets (rate, latency).
-  - **Expected output**: API definition (endpoints or schema), example requests/responses, and an error-handling strategy (status codes, error shapes).
+- **Use Case: Developer documentation drafting**
+  - **Goal**: Produce onboarding-ready docs that engineers can follow end-to-end.
+  - **Input**: System overview, prerequisites (runtime/tools), setup steps, environment variables, and common workflows.
+  - **Expected output**: A Markdown document with Overview, Quick Start, configuration details, and Troubleshooting (FAQs + common errors).
+
+- **Use Case: Code walkthrough**
+  - **Goal**: Explain a codebase/module to speed up onboarding and review.
+  - **Input**: Target directory/module, entry points, key abstractions, and a short description of intended behavior.
+  - **Expected output**: A walkthrough describing the call flow and data flow, with key files/functions highlighted and common pitfalls called out.
+
+- **Use Case: Release notes generation**
+  - **Goal**: Communicate changes clearly to users and stakeholders.
+  - **Input**: List of PRs/commits, feature flags, breaking changes, known issues, and upgrade requirements.
+  - **Expected output**: Release notes including highlights, bug fixes, breaking changes, upgrade steps, and any operational notes.
+
+
 
 ## Category 4: Testing & QA
 
@@ -67,20 +71,3 @@
   - **Goal**: Prevent a previously fixed bug from reappearing.
   - **Input**: Bug report, minimal reproduction steps or sample input, and a short description of the fix.
   - **Expected output**: One or more automated regression tests (in the project’s test framework) with clear assertions and notes for CI integration.
-
-## Category 5: Documentation
-
-- **Use Case: Developer documentation drafting**
-  - **Goal**: Produce onboarding-ready docs that engineers can follow end-to-end.
-  - **Input**: System overview, prerequisites (runtime/tools), setup steps, environment variables, and common workflows.
-  - **Expected output**: A Markdown document with Overview, Quick Start, configuration details, and Troubleshooting (FAQs + common errors).
-
-- **Use Case: Code walkthrough**
-  - **Goal**: Explain a codebase/module to speed up onboarding and review.
-  - **Input**: Target directory/module, entry points, key abstractions, and a short description of intended behavior.
-  - **Expected output**: A walkthrough describing the call flow and data flow, with key files/functions highlighted and common pitfalls called out.
-
-- **Use Case: Release notes generation**
-  - **Goal**: Communicate changes clearly to users and stakeholders.
-  - **Input**: List of PRs/commits, feature flags, breaking changes, known issues, and upgrade requirements.
-  - **Expected output**: Release notes including highlights, bug fixes, breaking changes, upgrade steps, and any operational notes.
