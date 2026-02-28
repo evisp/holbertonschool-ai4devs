@@ -97,35 +97,3 @@ print(parsed["name"])
 ```
 **Alternative Fixes Tested**: None.  
 **Result**: `"Alice"` prints correctly.
-
-## Bug 2 – bug5.py
-**AI Diagnosis**: `age` is an integer (`30`), so `age + "5"` mixes `int` and `str` and raises `TypeError`.  
-**Suggested Fix**: If you mean numeric addition, use an integer:
-```py
-new_age = age + 5
-```
-**Alternative Fixes Tested**: If you mean string concatenation, convert explicitly:
-```py
-new_age = str(age) + "5"
-```
-**Result**: Numeric fix yields `35`; string fix yields `"305"`.
-
-
-## Bug 5 – bug5.py
-
-**AI Diagnosis**: `numbers` is a list, and lists don’t have `.split()` (that method belongs to strings), so `numbers.split(",")` raises `AttributeError: 'list' object has no attribute 'split'`.  
-
-**Suggested Fix**: If you meant splitting a comma-separated string, make it a string first:
-
-```py
-numbers = "1,2,3,4"
-result = numbers.split(",")
-```
-
-**Alternative Fixes Tested**: If you already have a list and want a comma-joined string, use `join`:
-
-```py
-result = ",".join(map(str, numbers))
-```
-
-**Result**: Split fix yields `['1','2','3','4']`; join fix yields `"1,2,3,4"`.
