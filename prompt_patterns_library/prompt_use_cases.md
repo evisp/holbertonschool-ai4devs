@@ -79,8 +79,3 @@
   - **Goal**: Communicate changes clearly to users and stakeholders.
   - **Input**: List of PRs/commits, feature flags, breaking changes, known issues, and upgrade requirements.
   - **Expected output**: Release notes including highlights, bug fixes, breaking changes, upgrade steps, and any operational notes.
-
-- **Use Case: API reference generation**
-  - **Goal**: Generate a precise API reference consistent with the implementation.
-  - **Input**: OpenAPI draft or endpoint list, authentication method, and example payloads (requests/responses) if available.
-  - **Expected output**: An API reference section with endpoints, parameters, request/response examples, and documented error cases.
