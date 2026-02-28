@@ -1,81 +1,81 @@
 # Prompt Use Cases
 
-## Code Quality
-- **Refactoring for readability**
-  - **Goal**: Make code easier to understand and maintain without changing behavior
+## Category 1: Code Quality
+- **Use Case: Refactoring for readability**
+  - **Goal**: Improve maintainability and clarity without changing behavior
   - **Input**: Function/class/module in [LANGUAGE] + expected behavior notes
-  - **Output**: Refactored code + brief rationale + before/after highlights
+  - **Expected output**: Refactored code + brief rationale + key changes list
 
-- **Performance optimization**
-  - **Goal**: Reduce time/memory usage and remove bottlenecks
-  - **Input**: Hot path code + constraints (latency, memory) + sample input sizes
-  - **Output**: Optimized implementation + complexity notes + trade-offs
+- **Use Case: Performance optimization**
+  - **Goal**: Reduce latency and/or memory usage in a target code path
+  - **Input**: Hot-path code + constraints (latency/memory) + typical input sizes
+  - **Expected output**: Optimized code + complexity notes + trade-offs
 
-- **Security hardening**
-  - **Goal**: Find and fix common vulnerabilities (injection, authz, secrets)
+- **Use Case: Security hardening**
+  - **Goal**: Identify and remediate vulnerabilities (e.g., injection, authz flaws)
   - **Input**: Relevant code paths + threat model assumptions + frameworks used
-  - **Output**: Vulnerability list + patched code + recommended mitigations
+  - **Expected output**: Findings list + patched code + mitigation recommendations
 
-## Debugging & Incident Response
-- **Root-cause analysis**
-  - **Goal**: Identify why a bug occurs and how to reproduce it reliably
-  - **Input**: Symptom description + environment + steps to reproduce + logs/traces
-  - **Output**: Likely root cause(s) + reproduction steps + fix plan
+## Category 2: Debugging
+- **Use Case: Root-cause analysis**
+  - **Goal**: Determine why a bug occurs and how to reproduce it reliably
+  - **Input**: Symptom description + environment + repro steps + logs/traces
+  - **Expected output**: Ranked root-cause hypotheses + confirmed cause (if possible) + fix plan
 
-- **Log/trace interpretation**
-  - **Goal**: Turn noisy logs into actionable hypotheses
-  - **Input**: Error logs, stack traces, metrics snapshots, recent changes
-  - **Output**: Ranked hypotheses + what to check next + quick experiments
+- **Use Case: Log/trace interpretation**
+  - **Goal**: Convert noisy logs into actionable next checks
+  - **Input**: Stack traces/log excerpts + timestamps + recent changes
+  - **Expected output**: Likely failure points + next diagnostic steps + quick experiments
 
-- **Failure-mode mitigation**
-  - **Goal**: Stabilize a failing system quickly (timeouts, retries, fallbacks)
-  - **Input**: SLO/SLA targets + current failure symptoms + architecture overview
-  - **Output**: Immediate mitigations + longer-term prevention + monitoring updates
+- **Use Case: Incident mitigation**
+  - **Goal**: Stabilize a degraded system quickly while preserving correctness
+  - **Input**: Current symptoms + SLO/SLA targets + architecture overview
+  - **Expected output**: Immediate mitigations (timeouts/retries/fallbacks) + rollback guidance + follow-up actions
 
-## Architecture & Design
-- **Architecture decision records (ADR)**
-  - **Goal**: Compare options and document a decision clearly
-  - **Input**: Requirements + constraints + candidate approaches
-  - **Output**: ADR-style decision with pros/cons, risks, and rationale
+## Category 3: Architecture & Design
+- **Use Case: Architecture decision record (ADR)**
+  - **Goal**: Compare options and document a decision with rationale
+  - **Input**: Requirements + constraints + candidate solutions
+  - **Expected output**: ADR with decision, alternatives, pros/cons, risks, and rationale
 
-- **Scalability planning**
-  - **Goal**: Design for growth and load patterns
-  - **Input**: Expected traffic, data volume, read/write ratios, peak patterns
-  - **Output**: Scaling strategy + component choices + capacity assumptions
+- **Use Case: Scalability planning**
+  - **Goal**: Design a system that handles projected growth and peak load
+  - **Input**: Traffic estimates + read/write ratios + data volume + peak patterns
+  - **Expected output**: Scaling strategy + component plan + capacity assumptions and limits
 
-- **API design**
-  - **Goal**: Produce consistent, maintainable REST/GraphQL APIs
+- **Use Case: API design**
+  - **Goal**: Define a consistent, maintainable API surface for a domain
   - **Input**: Domain entities + operations + auth model + performance targets
-  - **Output**: Endpoint/schema spec + example requests/responses + error model
+  - **Expected output**: API spec (endpoints/schemas) + examples + error handling model
 
-## Testing & Quality Assurance
-- **Test plan creation**
-  - **Goal**: Define what to test at unit/integration/E2E levels
-  - **Input**: Component description + key risks + target environments
-  - **Output**: Test matrix + priority order + coverage targets
+## Category 4: Testing & QA
+- **Use Case: Test strategy creation**
+  - **Goal**: Ensure coverage across unit, integration, and E2E testing
+  - **Input**: Component description + risks + supported environments
+  - **Expected output**: Test matrix + prioritized test cases + coverage targets
 
-- **Edge-case generation**
-  - **Goal**: Find hidden failures and boundary conditions
-  - **Input**: Function signature/spec + invariants + constraints
-  - **Output**: Edge-case list + example inputs + expected outputs
+- **Use Case: Edge-case generation**
+  - **Goal**: Identify boundary conditions and failure cases early
+  - **Input**: Spec or function signature + invariants + constraints
+  - **Expected output**: Edge-case list + sample inputs + expected outcomes
 
-- **Regression test writing**
-  - **Goal**: Prevent a fixed bug from returning
-  - **Input**: Bug description + minimal reproducer + fix diff (optional)
-  - **Output**: Automated test(s) + assertions + CI notes
+- **Use Case: Regression test writing**
+  - **Goal**: Prevent reintroduction of a fixed bug
+  - **Input**: Bug report + minimal reproducer + fix details (optional)
+  - **Expected output**: Automated regression test(s) + assertions + CI integration notes
 
-## Documentation & Knowledge Transfer
-- **Developer documentation drafting**
-  - **Goal**: Create onboarding and usage docs that engineers can follow
-  - **Input**: System overview + setup steps + env variables + common workflows
-  - **Output**: Markdown docs with quickstart, examples, and troubleshooting
+## Category 5: Documentation
+- **Use Case: Developer documentation drafting**
+  - **Goal**: Provide onboarding and operational guidance for engineers
+  - **Input**: System overview + setup steps + env vars + common workflows
+  - **Expected output**: Markdown docs with quickstart, examples, and troubleshooting
 
-- **Code walkthroughs**
-  - **Goal**: Explain how a module works for reviewers or new team members
-  - **Input**: Code directory/module + intended behavior + key design choices
-  - **Output**: Structured explanation + call flow + key abstractions
+- **Use Case: Code walkthrough**
+  - **Goal**: Explain how a module works for reviewers and new contributors
+  - **Input**: Target module/directory + intended behavior + key design choices
+  - **Expected output**: Structured walkthrough (components, call flow, data flow) + notes on pitfalls
 
-- **Changelog / release notes**
-  - **Goal**: Summarize changes for users and stakeholders
-  - **Input**: PR list/commit messages + feature flags + breaking changes info
-  - **Output**: Release notes with highlights, fixes, known issues, upgrade steps
+- **Use Case: Release notes generation**
+  - **Goal**: Summarize changes clearly for users and stakeholders
+  - **Input**: PR/commit list + feature flags + breaking changes + known issues
+  - **Expected output**: Release notes with highlights, fixes, breaking changes, and upgrade steps
