@@ -3,12 +3,13 @@
 ## Introduction
 This project used AI assistance to debug five small programs across four languages (Python, JavaScript, Java, C++). The workflow was intentionally structured: diagnose the issue, apply a fix, and then validate the result with minimal tests (assertions or console output) and short documentation.
 
+
 Two ideas guided the work:
 
 >> A fix is only a hypothesis until it is validated.  
 >> Debugging is not only “making errors disappear,” but making behavior correct and intentional.
 
-That framing mattered because some bugs had a single correct repair (syntax, off-by-one), while others required deciding what the code *should* do.
+This framing mattered because some bugs had a single correct repair (syntax, off-by-one), while others required deciding what the code *should* do.
 
 ## AI strengths
 The AI performed best on “pattern match” defects—bugs that are common, local, and have a canonical solution. `bug1.py` was straightforward: missing colons and a missing parenthesis prevented parsing. The AI quickly converged on the minimal syntactic edits needed to restore a valid function and control flow.
