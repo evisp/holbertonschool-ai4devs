@@ -2,85 +2,85 @@
 
 ## Category 1: Code Quality
 - **Use Case: Refactoring for readability**
-  - **Goal**: Improve maintainability and clarity without changing behavior
-  - **Input**: Function/class/module in [LANGUAGE] + expected behavior notes
-  - **Expected output**: Refactored code + brief rationale + key changes list
+  - **Goal**: Improve maintainability and clarity without changing external behavior.
+  - **Input**: A code snippet (function/class/module) in [LANGUAGE], plus a short note describing expected behavior and any constraints (public API must remain stable).
+  - **Expected output**: Refactored code that preserves behavior, plus a short explanation of changes and why they improve readability.
 
 - **Use Case: Performance optimization**
-  - **Goal**: Reduce latency and/or memory usage in a target code path
-  - **Input**: Hot-path code + constraints (latency/memory) + typical input sizes
-  - **Expected output**: Optimized code + complexity notes + trade-offs
+  - **Goal**: Reduce runtime latency and/or memory usage in a target code path.
+  - **Input**: The slow code section in [LANGUAGE], representative input sizes, and a constraint (e.g., “must stay O(n log n)” or “no new dependencies”).
+  - **Expected output**: An optimized implementation, with a brief complexity/performance discussion and any trade-offs (readability vs speed).
 
 - **Use Case: Security hardening**
-  - **Goal**: Identify and remediate vulnerabilities (e.g., injection, authz flaws)
-  - **Input**: Relevant code paths + threat model assumptions + frameworks used
-  - **Expected output**: Findings list + patched code + mitigation recommendations
+  - **Goal**: Identify and fix security weaknesses in application code.
+  - **Input**: The relevant endpoints/functions, how data enters the system (request params/body/files), and the security context (authn/authz model, framework).
+  - **Expected output**: A list of concrete vulnerabilities found, patched code changes, and recommended mitigations (validation, escaping, headers, secrets handling).
 
 ## Category 2: Debugging
 - **Use Case: Root-cause analysis**
-  - **Goal**: Determine why a bug occurs and how to reproduce it reliably
-  - **Input**: Symptom description + environment + repro steps + logs/traces
-  - **Expected output**: Ranked root-cause hypotheses + most likely cause + fix plan
+  - **Goal**: Determine the most likely cause of a bug and propose a fix.
+  - **Input**: Symptom description, exact steps to reproduce, environment details (OS/runtime/version), and error logs/stack traces.
+  - **Expected output**: Ranked hypotheses, the most likely root cause, and a step-by-step fix plan (including what to verify after the change).
 
 - **Use Case: Log/trace interpretation**
-  - **Goal**: Convert noisy logs into actionable next checks
-  - **Input**: Stack traces/log excerpts + timestamps + recent changes
-  - **Expected output**: Likely failure points + next diagnostic steps + quick experiments
+  - **Goal**: Turn logs/traces into actionable next debugging steps.
+  - **Input**: Log excerpts or traces (with timestamps), the component/service name, and any recent changes or deployments.
+  - **Expected output**: A diagnosis narrative (what failed and where), 3–5 concrete checks to run next, and suggested instrumentation improvements if logs are insufficient.
 
 - **Use Case: Incident mitigation**
-  - **Goal**: Stabilize a degraded system quickly while preserving correctness
-  - **Input**: Current symptoms + SLO/SLA targets + architecture overview
-  - **Expected output**: Immediate mitigations + rollback guidance + follow-up actions
+  - **Goal**: Stabilize a degraded production system quickly and safely.
+  - **Input**: Current symptoms (timeouts, error rate), service SLO/SLA targets, and a brief architecture summary (dependencies, databases, queues).
+  - **Expected output**: Immediate mitigation options (rollback, feature flag off, rate limiting, timeouts), with risks, and a follow-up plan for permanent prevention.
 
 ## Category 3: Architecture & Design
-- **Use Case: Architecture decision record (ADR)**
-  - **Goal**: Compare options and document a decision with rationale
-  - **Input**: Requirements + constraints + candidate solutions
-  - **Expected output**: ADR with decision, alternatives, pros/cons, risks, and rationale
+- **Use Case: Architecture Decision Record (ADR)**
+  - **Goal**: Decide between architectural options and document the decision.
+  - **Input**: Functional requirements, non-functional requirements (performance/scalability/security), constraints (budget/timeline/stack), and the candidate options.
+  - **Expected output**: An ADR-style write-up: decision, alternatives, pros/cons, risks, and a clear rationale tied to requirements.
 
 - **Use Case: Scalability planning**
-  - **Goal**: Design a system that handles projected growth and peak load
-  - **Input**: Traffic estimates + read/write ratios + data volume + peak patterns
-  - **Expected output**: Scaling strategy + component plan + capacity assumptions and limits
+  - **Goal**: Design how a system scales from current load to projected load.
+  - **Input**: Expected traffic (avg/peak), read/write ratio, data volume growth, and bottleneck suspects (DB, cache, external APIs).
+  - **Expected output**: A scaling plan (caching, partitioning, async queues, horizontal scaling), plus key assumptions and limits (what breaks first).
 
 - **Use Case: API design**
-  - **Goal**: Define a consistent, maintainable API surface for a domain
-  - **Input**: Domain entities + operations + auth model + performance targets
-  - **Expected output**: API spec (endpoints/schemas) + examples + error handling model
+  - **Goal**: Define a consistent, maintainable API for a domain.
+  - **Input**: Domain entities/resources, operations (CRUD + custom actions), authentication/authorization needs, and performance targets (rate, latency).
+  - **Expected output**: API definition (endpoints or schema), example requests/responses, and an error-handling strategy (status codes, error shapes).
 
 ## Category 4: Testing & QA
 - **Use Case: Test strategy creation**
-  - **Goal**: Ensure coverage across unit, integration, and E2E testing
-  - **Input**: Component description + risks + supported environments
-  - **Expected output**: Test matrix + prioritized test cases + coverage targets
+  - **Goal**: Ensure appropriate coverage across unit, integration, and end-to-end tests.
+  - **Input**: Component description, critical user flows, dependencies (DB/services), and release risk level (low/medium/high).
+  - **Expected output**: A test strategy outlining what to test at each level, recommended tools/frameworks, and a coverage target (e.g., “80% unit for core logic”).
 
 - **Use Case: Edge-case generation**
-  - **Goal**: Identify boundary conditions and failure cases early
-  - **Input**: Spec or function signature + invariants + constraints
-  - **Expected output**: Edge-case list + sample inputs + expected outcomes
+  - **Goal**: Identify boundary conditions and failure scenarios before release.
+  - **Input**: Function signature/specification, constraints (valid ranges, nullability), and invariants (must always hold true).
+  - **Expected output**: A structured list of edge cases with example inputs and the expected behavior/output for each.
 
 - **Use Case: Regression test writing**
-  - **Goal**: Prevent reintroduction of a fixed bug
-  - **Input**: Bug report + minimal reproducer + fix details (optional)
-  - **Expected output**: Automated regression test(s) + assertions + CI integration notes
+  - **Goal**: Prevent a previously fixed bug from reappearing.
+  - **Input**: Bug report, minimal reproduction steps or sample input, and a short description of the fix.
+  - **Expected output**: One or more automated regression tests (in the project’s test framework) with clear assertions and notes for CI integration.
 
 ## Category 5: Documentation
 - **Use Case: Developer documentation drafting**
-  - **Goal**: Provide onboarding and operational guidance for engineers
-  - **Input**: System overview + setup steps + env vars + common workflows
-  - **Expected output**: Markdown docs with quickstart, examples, and troubleshooting
+  - **Goal**: Produce onboarding-ready docs that engineers can follow end-to-end.
+  - **Input**: System overview, prerequisites (runtime/tools), setup steps, environment variables, and common workflows.
+  - **Expected output**: A Markdown document with Overview, Quick Start, configuration details, and Troubleshooting (FAQs + common errors).
 
 - **Use Case: Code walkthrough**
-  - **Goal**: Explain how a module works for reviewers and new contributors
-  - **Input**: Target module/directory + intended behavior + key design choices
-  - **Expected output**: Structured walkthrough (components, call flow, data flow) + notes on pitfalls
+  - **Goal**: Explain a codebase/module to speed up onboarding and review.
+  - **Input**: Target directory/module, entry points, key abstractions, and a short description of intended behavior.
+  - **Expected output**: A walkthrough describing the call flow and data flow, with key files/functions highlighted and common pitfalls called out.
 
 - **Use Case: Release notes generation**
-  - **Goal**: Summarize changes clearly for users and stakeholders
-  - **Input**: PR/commit list + feature flags + breaking changes + known issues
-  - **Expected output**: Release notes with highlights, fixes, breaking changes, and upgrade steps
+  - **Goal**: Communicate changes clearly to users and stakeholders.
+  - **Input**: List of PRs/commits, feature flags, breaking changes, known issues, and upgrade requirements.
+  - **Expected output**: Release notes including highlights, bug fixes, breaking changes, upgrade steps, and any operational notes.
 
 - **Use Case: API reference generation**
-  - **Goal**: Produce a precise API reference that matches implementation
-  - **Input**: Source code annotations (or OpenAPI draft) + endpoint list + auth details
-  - **Expected output**: API reference section with endpoints, parameters, examples, and common errors
+  - **Goal**: Generate a precise API reference consistent with the implementation.
+  - **Input**: OpenAPI draft or endpoint list, authentication method, and example payloads (requests/responses) if available.
+  - **Expected output**: An API reference section with endpoints, parameters, request/response examples, and documented error cases.
