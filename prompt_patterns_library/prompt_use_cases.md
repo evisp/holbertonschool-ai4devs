@@ -84,6 +84,18 @@
   - **Input**: Existing implementation and constraints
   - **Output**: Optimized algorithm with complexity comparison
 
+## Automation
+- **Code Generation**
+  - **Goal**: Generate boilerplate code for common components or patterns
+  - **Input**: Feature description, language, and framework
+  - **Output**: Ready-to-use code scaffold with brief notes
+
+- **Task Scripting**
+  - **Goal**: Automate repetitive development tasks
+  - **Input**: Description of the task, environment, and tools
+  - **Output**: Script or command sequence to perform the task automatically
+
+
 ## DevOps and Deployment
 
 - **CI/CD Pipeline Assistance**
