@@ -1,73 +1,111 @@
 # Prompt Use Cases
 
-## Category 1: Code Quality
+## Code Quality
+- **Refactoring**
+  - **Goal**: Improve readability, maintainability, and performance
+  - **Input**: Source code in a given language
+  - **Output**: Refactored code with a brief explanation of changes
 
-- **Use Case: Refactoring for readability**
-  - **Goal**: Improve maintainability and clarity without changing external behavior.
-  - **Input**: A code snippet (function/class/module) in [LANGUAGE], plus a short note describing expected behavior and any constraints (public API must remain stable).
-  - **Expected output**: Refactored code that preserves behavior, plus a short explanation of changes and why they improve readability.
+- **Style Enforcement**
+  - **Goal**: Apply consistent naming, formatting, and coding conventions
+  - **Input**: Code block or file
+  - **Output**: Reformatted code aligned with the requested style guide
 
-- **Use Case: Performance optimization**
-  - **Goal**: Reduce runtime latency and/or memory usage in a target code path.
-  - **Input**: The slow code section in [LANGUAGE], representative input sizes, and a constraint (e.g., “must stay O(n log n)” or “no new dependencies”).
-  - **Expected output**: An optimized implementation, with a brief complexity/performance discussion and any trade-offs (readability vs speed).
+## Debugging
+- **Error Diagnosis**
+  - **Goal**: Identify the root cause of an error or unexpected behavior
+  - **Input**: Code snippet, error message, and runtime context
+  - **Output**: Likely cause, affected lines, and suggested fix
 
-- **Use Case: Security hardening**
-  - **Goal**: Identify and fix security weaknesses in application code.
-  - **Input**: The relevant endpoints/functions, how data enters the system (request params/body/files), and the security context (authn/authz model, framework).
-  - **Expected output**: A list of concrete vulnerabilities found, patched code changes, and recommended mitigations (validation, escaping, headers, secrets handling).
+- **Log Analysis**
+  - **Goal**: Interpret logs to isolate failures or bottlenecks
+  - **Input**: Application logs, stack traces, or console output
+  - **Output**: Problem summary and debugging steps
 
-## Category 2: Debugging
+## Documentation
+- **Code Explanation**
+  - **Goal**: Explain what a function, class, or module does
+  - **Input**: Source code
+  - **Output**: Clear human-readable explanation of behavior and logic
 
-- **Use Case: Root-cause analysis**
-  - **Goal**: Determine the most likely cause of a bug and propose a fix.
-  - **Input**: Symptom description, exact steps to reproduce, environment details (OS/runtime/version), and error logs/stack traces.
-  - **Expected output**: Ranked hypotheses, the most likely root cause, and a step-by-step fix plan (including what to verify after the change).
+- **API Documentation**
+  - **Goal**: Generate or improve endpoint and method documentation
+  - **Input**: Route definitions, function signatures, or source code
+  - **Output**: Structured API docs with parameters, responses, and examples
 
-- **Use Case: Log/trace interpretation**
-  - **Goal**: Turn logs/traces into actionable next debugging steps.
-  - **Input**: Log excerpts or traces (with timestamps), the component/service name, and any recent changes or deployments.
-  - **Expected output**: A diagnosis narrative (what failed and where), 3–5 concrete checks to run next, and suggested instrumentation improvements if logs are insufficient.
+## Testing
+- **Unit Test Generation**
+  - **Goal**: Create tests for functions, classes, or modules
+  - **Input**: Source code and testing framework
+  - **Output**: Unit test cases covering expected behavior and edge cases
 
-- **Use Case: Incident mitigation**
-  - **Goal**: Stabilize a degraded production system quickly and safely.
-  - **Input**: Current symptoms (timeouts, error rate), service SLO/SLA targets, and a brief architecture summary (dependencies, databases, queues).
-  - **Expected output**: Immediate mitigation options (rollback, feature flag off, rate limiting, timeouts), with risks, and a follow-up plan for permanent prevention.
+- **Test Case Design**
+  - **Goal**: Identify critical scenarios to validate correctness
+  - **Input**: Feature description, code, or requirements
+  - **Output**: List of test cases with inputs and expected results
 
+## Code Review
+- **Pull Request Feedback**
+  - **Goal**: Review code changes for quality, readability, and risks
+  - **Input**: Diff, pull request description, or changed files
+  - **Output**: Review comments with suggested improvements
 
+- **Best Practice Validation**
+  - **Goal**: Check whether code follows language and framework best practices
+  - **Input**: Source code or project snippet
+  - **Output**: Findings with concrete recommendations
 
-## Category 3: Documentation
+## Security
+- **Vulnerability Detection**
+  - **Goal**: Identify common security issues in code
+  - **Input**: Source code, configuration, or dependency list
+  - **Output**: Potential vulnerabilities and mitigation advice
 
-- **Use Case: Developer documentation drafting**
-  - **Goal**: Produce onboarding-ready docs that engineers can follow end-to-end.
-  - **Input**: System overview, prerequisites (runtime/tools), setup steps, environment variables, and common workflows.
-  - **Expected output**: A Markdown document with Overview, Quick Start, configuration details, and Troubleshooting (FAQs + common errors).
+- **Secure Coding Improvement**
+  - **Goal**: Rewrite code to reduce exposure to security risks
+  - **Input**: Insecure implementation or risky pattern
+  - **Output**: Safer version of the code with explanation
 
-- **Use Case: Code walkthrough**
-  - **Goal**: Explain a codebase/module to speed up onboarding and review.
-  - **Input**: Target directory/module, entry points, key abstractions, and a short description of intended behavior.
-  - **Expected output**: A walkthrough describing the call flow and data flow, with key files/functions highlighted and common pitfalls called out.
+## Performance Optimization
+- **Hotspot Identification**
+  - **Goal**: Detect inefficient logic or resource-heavy operations
+  - **Input**: Code snippet, profiler output, or runtime description
+  - **Output**: Performance bottlenecks and optimization ideas
 
-- **Use Case: Release notes generation**
-  - **Goal**: Communicate changes clearly to users and stakeholders.
-  - **Input**: List of PRs/commits, feature flags, breaking changes, known issues, and upgrade requirements.
-  - **Expected output**: Release notes including highlights, bug fixes, breaking changes, upgrade steps, and any operational notes.
+- **Algorithm Improvement**
+  - **Goal**: Replace inefficient approaches with better ones
+  - **Input**: Existing implementation and constraints
+  - **Output**: Optimized algorithm with complexity comparison
 
+## DevOps and Deployment
+- **CI/CD Pipeline Assistance**
+  - **Goal**: Create or improve automation for build, test, and deployment
+  - **Input**: Project stack, workflow requirements, or pipeline file
+  - **Output**: CI/CD configuration and setup explanation
 
+- **Containerization Support**
+  - **Goal**: Package applications for consistent environments
+  - **Input**: Application structure and runtime requirements
+  - **Output**: Dockerfile or container setup instructions
 
-## Category 4: Testing & QA
+## Data and Database
+- **SQL Query Generation**
+  - **Goal**: Write queries for retrieval, filtering, aggregation, or updates
+  - **Input**: Schema description and desired result
+  - **Output**: SQL query with explanation
 
-- **Use Case: Test strategy creation**
-  - **Goal**: Ensure appropriate coverage across unit, integration, and end-to-end tests.
-  - **Input**: Component description, critical user flows, dependencies (DB/services), and release risk level (low/medium/high).
-  - **Expected output**: A test strategy outlining what to test at each level, recommended tools/frameworks, and a coverage target (e.g., “80% unit for core logic”).
+- **Schema Review**
+  - **Goal**: Improve database structure for clarity and efficiency
+  - **Input**: Table definitions or ER-style description
+  - **Output**: Suggested schema changes and rationale
 
-- **Use Case: Edge-case generation**
-  - **Goal**: Identify boundary conditions and failure scenarios before release.
-  - **Input**: Function signature/specification, constraints (valid ranges, nullability), and invariants (must always hold true).
-  - **Expected output**: A structured list of edge cases with example inputs and the expected behavior/output for each.
+## Learning and Onboarding
+- **Concept Simplification**
+  - **Goal**: Explain technical concepts in a beginner-friendly way
+  - **Input**: Topic name, code sample, or question
+  - **Output**: Clear explanation with examples
 
-- **Use Case: Regression test writing**
-  - **Goal**: Prevent a previously fixed bug from reappearing.
-  - **Input**: Bug report, minimal reproduction steps or sample input, and a short description of the fix.
-  - **Expected output**: One or more automated regression tests (in the project’s test framework) with clear assertions and notes for CI integration.
+- **Project Onboarding**
+  - **Goal**: Help a new developer understand a codebase quickly
+  - **Input**: Repository structure, README, or key files
+  - **Output**: High-level project overview and recommended starting points
