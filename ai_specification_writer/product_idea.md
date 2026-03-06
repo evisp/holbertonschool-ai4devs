@@ -1,4 +1,4 @@
-# CarPool Connect
+# CarPool Connect Product Idea
 
 ## Vision
 CarpoolConnect helps companies save money and reduce carbon emissions by matching employees for shared daily commutes. Colleagues ride together instead of driving alone — cutting costs, pollution, and parking demand while building workplace connections.
