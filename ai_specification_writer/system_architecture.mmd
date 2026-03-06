@@ -1,0 +1,22 @@
+graph TD
+  A[Mobile App<br/>iOS/Android] --> B[API Gateway]
+  F[Web Dashboard<br/>Managers/Officers] --> B
+  
+  B --> C[Auth Service<br/>Corporate SSO<br/>Okta/Azure AD]
+  B --> D[Matching Engine<br/>Route + Schedule<br/>Smart Matching]
+  B --> E[Analytics Dashboard<br/>CO2/Cost/Participation<br/>Reports]
+  B --> G[Parking Manager<br/>Spot Assignment<br/>Usage Tracking]
+  B --> H[Notification Service<br/>Push/Email/SMS]
+  
+  C --> I[(User DB<br/>Users/Companies)]
+  D --> I
+  E --> J[(Analytics DB<br/>Daily Matches<br/>CO2 Metrics)]
+  G --> J
+  H --> I
+  
+  K[Google Maps API<br/>Route Calc] --> D
+  L[Calendar API<br/>Outlook/Google] --> D
+  
+  style A fill:#e1f5fe
+  style F fill:#f3e5f5
+  style B fill:#fff3e0
