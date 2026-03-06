@@ -25,7 +25,6 @@
   - **Output**: Problem summary and debugging steps
 
 ## Documentation
-
 - **Code Explanation**
   - **Goal**: Explain what a function, class, or module does
   - **Input**: Source code
@@ -35,6 +34,11 @@
   - **Goal**: Generate or improve endpoint and method documentation
   - **Input**: Route definitions, function signatures, or source code
   - **Output**: Structured API docs with parameters, responses, and examples
+
+- **README Generation**
+  - **Goal**: Create or improve project-level documentation for setup and usage
+  - **Input**: Repository structure, dependencies, and project purpose
+  - **Output**: A complete README with installation, usage, and contribution sections
 
 ## Testing
 
@@ -95,6 +99,11 @@
   - **Input**: Description of the task, environment, and tools
   - **Output**: Script or command sequence to perform the task automatically
 
+- **Workflow Automation**
+  - **Goal**: Automate multi-step development workflows such as build, lint, and deploy
+  - **Input**: Project requirements, tools, and workflow steps
+  - **Output**: Automated workflow configuration or script
+
 
 ## DevOps and Deployment
 
@@ -121,7 +130,6 @@
   - **Output**: Suggested schema changes and rationale
 
 ## Learning and Onboarding
-
 - **Concept Simplification**
   - **Goal**: Explain technical concepts in a beginner-friendly way
   - **Input**: Topic name, code sample, or question
@@ -131,3 +139,8 @@
   - **Goal**: Help a new developer understand a codebase quickly
   - **Input**: Repository structure, README, or key files
   - **Output**: High-level project overview and recommended starting points
+
+- **Guided Code Walkthrough**
+  - **Goal**: Break down a file or module step by step for learning purposes
+  - **Input**: Source code file or selected module
+  - **Output**: Sequential explanation of the code’s structure, logic, and flow
