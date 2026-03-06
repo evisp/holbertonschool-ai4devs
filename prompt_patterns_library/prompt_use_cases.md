@@ -1,6 +1,7 @@
 # Prompt Use Cases
 
 ## Code Quality
+
 - **Refactoring**
   - **Goal**: Improve readability, maintainability, and performance
   - **Input**: Source code in a given language
@@ -12,6 +13,7 @@
   - **Output**: Reformatted code aligned with the requested style guide
 
 ## Debugging
+
 - **Error Diagnosis**
   - **Goal**: Identify the root cause of an error or unexpected behavior
   - **Input**: Code snippet, error message, and runtime context
@@ -23,6 +25,7 @@
   - **Output**: Problem summary and debugging steps
 
 ## Documentation
+
 - **Code Explanation**
   - **Goal**: Explain what a function, class, or module does
   - **Input**: Source code
@@ -34,6 +37,7 @@
   - **Output**: Structured API docs with parameters, responses, and examples
 
 ## Testing
+
 - **Unit Test Generation**
   - **Goal**: Create tests for functions, classes, or modules
   - **Input**: Source code and testing framework
@@ -45,6 +49,7 @@
   - **Output**: List of test cases with inputs and expected results
 
 ## Code Review
+
 - **Pull Request Feedback**
   - **Goal**: Review code changes for quality, readability, and risks
   - **Input**: Diff, pull request description, or changed files
@@ -56,6 +61,7 @@
   - **Output**: Findings with concrete recommendations
 
 ## Security
+
 - **Vulnerability Detection**
   - **Goal**: Identify common security issues in code
   - **Input**: Source code, configuration, or dependency list
@@ -67,6 +73,7 @@
   - **Output**: Safer version of the code with explanation
 
 ## Performance Optimization
+
 - **Hotspot Identification**
   - **Goal**: Detect inefficient logic or resource-heavy operations
   - **Input**: Code snippet, profiler output, or runtime description
@@ -78,6 +85,7 @@
   - **Output**: Optimized algorithm with complexity comparison
 
 ## DevOps and Deployment
+
 - **CI/CD Pipeline Assistance**
   - **Goal**: Create or improve automation for build, test, and deployment
   - **Input**: Project stack, workflow requirements, or pipeline file
@@ -89,6 +97,7 @@
   - **Output**: Dockerfile or container setup instructions
 
 ## Data and Database
+
 - **SQL Query Generation**
   - **Goal**: Write queries for retrieval, filtering, aggregation, or updates
   - **Input**: Schema description and desired result
@@ -100,6 +109,7 @@
   - **Output**: Suggested schema changes and rationale
 
 ## Learning and Onboarding
+
 - **Concept Simplification**
   - **Goal**: Explain technical concepts in a beginner-friendly way
   - **Input**: Topic name, code sample, or question
