@@ -1,14 +1,11 @@
 graph TD
-  A[API Gateway<br/>Rate Limit/Auth] --> B[Auth Service<br/>PostgreSQL]
-  A --> C[Tasks Service<br/>PostgreSQL+Redis]
+  A[API Gateway<br/>Routing + Rate Limit] --> B[Auth Service<br/>PostgreSQL]
+  A --> C[Tasks Service<br/>PostgreSQL+Redis] 
   A --> D[Chat Service<br/>MongoDB]
   A --> E[Points Service<br/>PostgreSQL]
-  A --> F[Verification Service<br/>S3+PostgreSQL]
-  A --> G[Notifications Service<br/>RabbitMQ]
-  A --> H[Maps Service<br/>Redis Cache]
+  A --> F[Notifications Service<br/>RabbitMQ]
   
-  C --> I[Google Maps API]
+  C --> G[Google Maps API]
   
   style A fill:#fff3e0
   style B fill:#e8f5e8
-  style C fill:#e8f5e8
