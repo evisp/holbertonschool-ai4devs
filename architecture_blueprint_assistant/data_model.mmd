@@ -1,33 +1,43 @@
 erDiagram
-    USERS ||--o{ TASKS : posts
-    USERS ||--o{ TASKS : completes  
-    TASKS ||--o{ MESSAGES : contains
-    NEIGHBORHOODS ||--o{ USERS : hosts
+    NEIGHBORHOODS ||--o{ USERS : "hosts"
+    USERS ||--o{ TASKS : "posts_as_requestor"
+    USERS ||--o{ TASKS : "completes_as_helper"
+    TASKS ||--o{ MESSAGES : "contains"
     
     USERS {
       uuid id PK
       string email UK
       string name
-      enum role
+      string role
+      int points_total
       uuid neighborhood_id FK
+      float rating_avg
     }
     
     TASKS {
-      uuid id PK 
+      uuid id PK
       string title
       int reward_points
       uuid requestor_id FK
       uuid helper_id FK
+      float lat
+      float lng
+      float radius_km
+      timestamp expires_at
     }
     
     MESSAGES {
       uuid id PK
       uuid task_id FK
+      uuid sender_id FK
       text message_text
+      boolean is_read
     }
     
     NEIGHBORHOODS {
       uuid id PK
       string name
+      float lat_center
       uuid admin_user_id FK
+      int member_count
     }
