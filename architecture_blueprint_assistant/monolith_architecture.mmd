@@ -1,0 +1,17 @@
+graph TD
+  A[Mobile App<br/>React Native] --> B[Backend Monolith]
+  C[PWA Web] --> B
+  
+  B --> D[Authentication<br/>JWT + Roles]
+  B --> E[Task Matching<br/>2km Search]
+  B --> F[Chat Module<br/>WebSocket]
+  B --> G[Points Engine<br/>Leaderboards]
+  B --> H[Verification<br/>Photo Upload]
+  B --> I[Notifications<br/>Push Service]
+  
+  B --> J[(PostgreSQL<br/>Users/Tasks/Chats/Points)]
+  
+  K[Google Maps API] --> E
+  
+  style B fill:#ffebee
+  style J fill:#fff3e0
