@@ -4,19 +4,18 @@
 LocalHero connects neighbors needing quick help (dog walking, groceries, plant watering) with others happy to assist. Helpers earn community points instead of cash, building trust and neighborhood connections.
 
 ## Core Features
-- Post tasks visible within 2km radius with clear completion requirements
-- Real-time matching shows available helpers by skills and distance
-- In-app chat for task coordination and verification photos
-- Points system rewards reliable helpers with badges and leaderboards
-- Task completion verification prevents abuse
+- Post tasks visible within 2km radius
+- Real-time helper matching by skills and distance
+- In-app chat and task verification
+- Points system with leaderboards
 
 ## Users
-- **Helpers**: Neighbors earning points for dog walking, shopping, repairs
-- **Requestors**: Post urgent tasks needing same-day neighborhood help
-- **Neighborhood Admins**: Resolve disputes, verify completions, manage points
+- **Helpers**: Neighbors who complete tasks to earn points and badges
+- **Requestors**: Neighbors posting urgent tasks needing same-day help
+- **Neighborhood Admins**: Resolve disputes and manage community points
 
 ## Constraints
-- Scale to 1K concurrent users per neighborhood (10K total)
-- GDPR compliance for personal task details and chat history
-- Mobile-first design (iOS/Android PWA)
-- Simple deployment (single server initially, microservices later)
+- Scale to 1K concurrent users per neighborhood
+- GDPR compliance for personal data
+- Mobile-first (iOS/Android PWA)
+- Simple deployment initially
