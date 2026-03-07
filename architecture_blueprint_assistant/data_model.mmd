@@ -1,0 +1,33 @@
+erDiagram
+    USERS ||--o{ TASKS : posts
+    USERS ||--o{ TASKS : completes  
+    TASKS ||--o{ MESSAGES : contains
+    NEIGHBORHOODS ||--o{ USERS : hosts
+    
+    USERS {
+      uuid id PK
+      string email UK
+      string name
+      enum role
+      uuid neighborhood_id FK
+    }
+    
+    TASKS {
+      uuid id PK 
+      string title
+      int reward_points
+      uuid requestor_id FK
+      uuid helper_id FK
+    }
+    
+    MESSAGES {
+      uuid id PK
+      uuid task_id FK
+      text message_text
+    }
+    
+    NEIGHBORHOODS {
+      uuid id PK
+      string name
+      uuid admin_user_id FK
+    }
