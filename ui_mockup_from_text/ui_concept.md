@@ -1,26 +1,19 @@
 # UI Concept - Property Pulse Albania
 
 ## Purpose
-Help people explore Albanian property listings, compare homes, and understand whether a property is priced fairly. The interface should be simple, visual, and easy to use on both desktop and mobile.
+Help people explore Albanian property listings, compare homes, and understand whether a price looks fair. The MVP UI should focus on the main user workflow and keep the interface centered on core actions and core screens.[web:34][web:37]
 
 ## Users
-- Buyers: search for homes, compare options, and check if a listing looks like a good deal.
-- Sellers: review similar properties and understand how their property compares in the market.
-- Agents: browse listings, support clients, and compare properties more efficiently.
-- Students and instructors: use the platform as a practical project example in data and web development.
+- Buyers: search for homes, compare options, and check whether a property is a good deal.
+- Sellers: review similar properties and understand how their asking price compares with the market.
+- Agents: support clients by browsing listings, comparing homes, and checking price position.
 
 ## Core Screens
-- Home page with search bar, featured listings, and quick filters.
-- Listings page with filters, sorting, and property cards.
-- Map view with property markers and clickable summary cards.
-- Property details page with price, size, location, features, and estimated value.
-- Comparison page with two properties shown side by side.
-- Price predictor page where users enter property details and receive an estimated price.
+- Home/Search Screen: search bar, basic filters, and featured listings.
+- Property Map Screen: interactive map with property markers and quick summary cards.
+- Property Details Screen: full property information, estimated value, and price status.
 
 ## Actions
-- Search for properties by city, neighborhood, price, size, and property type.
-- Open a listing to view full property details.
-- View properties on a map and click markers to see summary cards.
-- Compare two properties side by side.
-- Enter property details to get a price estimate.
-- Check whether a property is underpriced, fairly priced, or overpriced.
+- Search for properties by city, price, size, and property type.
+- Open a property to view details and estimated value.
+- Compare a listing price against similar homes to see whether it is underpriced, fair, or overpriced.
