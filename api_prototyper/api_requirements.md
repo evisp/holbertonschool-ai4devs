@@ -12,16 +12,12 @@ Albanian real estate listing and property price analysis platform
 ## Core Operations
 - Create user account
 - Log in user
-- Get current user profile
 - List properties
 - Get property by ID
 - Search properties by filters
 - Get map-ready property results
-- Save favorite property
 - Compare two properties
 - Estimate property price
-- Get price status for a property
-- Admin create, update, or delete property
 
 ## Data Rules
 - Property ID must be unique
