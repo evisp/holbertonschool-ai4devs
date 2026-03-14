@@ -1,0 +1,833 @@
+openapi: 3.0.3
+info:
+  title: Property Pulse Albania API
+  version: 1.0.0
+  description: API for Albanian real estate listings, property comparison, map browsing, and price estimation.
+
+servers:
+  - url: https://api.propertypulsealbania.com/v1
+
+tags:
+  - name: Authentication
+  - name: Properties
+  - name: Analysis
+
+paths:
+  /auth/register:
+    post:
+      tags:
+        - Authentication
+      summary: Create user account
+      operationId: registerUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '201':
+          description: User account created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          $ref: '#/components/responses/Conflict'
+
+  /auth/login:
+    post:
+      tags:
+        - Authentication
+      summary: Log in user
+      operationId: loginUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /properties:
+    get:
+      tags:
+        - Properties
+      summary: List properties
+      operationId: listProperties
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Sort'
+        - in: query
+          name: city
+          schema:
+            type: string
+          description: Filter by city
+        - in: query
+          name: propertyType
+          schema:
+            type: string
+            enum: [apartment, house, villa, land, commercial]
+          description: Filter by property type
+        - in: query
+          name: minPrice
+          schema:
+            type: number
+            format: float
+            minimum: 0
+          description: Minimum price
+        - in: query
+          name: maxPrice
+          schema:
+            type: number
+            format: float
+            minimum: 0
+          description: Maximum price
+      responses:
+        '200':
+          description: Paginated property list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPropertiesResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    post:
+      tags:
+        - Properties
+      summary: Create property
+      operationId: createProperty
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PropertyCreateRequest'
+      responses:
+        '201':
+          description: Property created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /properties/{propertyId}:
+    get:
+      tags:
+        - Properties
+      summary: Get property by ID
+      operationId: getPropertyById
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/PropertyId'
+      responses:
+        '200':
+          description: Property found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      tags:
+        - Properties
+      summary: Update property
+      operationId: updateProperty
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/PropertyId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PropertyUpdateRequest'
+      responses:
+        '200':
+          description: Property updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - Properties
+      summary: Delete property
+      operationId: deleteProperty
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/PropertyId'
+      responses:
+        '204':
+          description: Property deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /properties/search:
+    get:
+      tags:
+        - Properties
+      summary: Search properties by filters
+      operationId: searchProperties
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: city
+          schema:
+            type: string
+        - in: query
+          name: neighborhood
+          schema:
+            type: string
+        - in: query
+          name: minPrice
+          schema:
+            type: number
+            format: float
+            minimum: 0
+        - in: query
+          name: maxPrice
+          schema:
+            type: number
+            format: float
+            minimum: 0
+        - in: query
+          name: minSize
+          schema:
+            type: number
+            format: float
+            minimum: 0
+        - in: query
+          name: maxSize
+          schema:
+            type: number
+            format: float
+            minimum: 0
+        - in: query
+          name: rooms
+          schema:
+            type: integer
+            minimum: 0
+        - in: query
+          name: propertyType
+          schema:
+            type: string
+            enum: [apartment, house, villa, land, commercial]
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPropertiesResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /properties/map:
+    get:
+      tags:
+        - Properties
+      summary: Get map-ready property results
+      operationId: getMapProperties
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: city
+          schema:
+            type: string
+        - in: query
+          name: minPrice
+          schema:
+            type: number
+            format: float
+            minimum: 0
+        - in: query
+          name: maxPrice
+          schema:
+            type: number
+            format: float
+            minimum: 0
+      responses:
+        '200':
+          description: Map property markers
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MapProperty'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /properties/compare:
+    get:
+      tags:
+        - Analysis
+      summary: Compare two properties
+      operationId: compareProperties
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: propertyId1
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: propertyId2
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Property comparison result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PropertyComparison'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /properties/estimate:
+    post:
+      tags:
+        - Analysis
+      summary: Estimate property price
+      operationId: estimatePropertyPrice
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PriceEstimateRequest'
+      responses:
+        '200':
+          description: Price estimate result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceEstimateResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+    PropertyId:
+      name: propertyId
+      in: path
+      required: true
+      description: Unique property identifier
+      schema:
+        type: string
+        format: uuid
+
+    Page:
+      name: page
+      in: query
+      description: Page number
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+
+    Limit:
+      name: limit
+      in: query
+      description: Number of items per page
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+
+    Sort:
+      name: sort
+      in: query
+      description: Sort order
+      required: false
+      schema:
+        type: string
+        enum:
+          - price_asc
+          - price_desc
+          - size_asc
+          - size_desc
+          - created_desc
+        default: created_desc
+
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    Conflict:
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    Error:
+      type: object
+      required:
+        - code
+        - message
+        - timestamp
+      properties:
+        code:
+          type: string
+          example: VALIDATION_ERROR
+        message:
+          type: string
+          example: One or more fields are invalid.
+        details:
+          type: string
+          nullable: true
+          example: price must be greater than 0
+        timestamp:
+          type: string
+          format: date-time
+        correlationId:
+          type: string
+          example: req_123456789
+
+    User:
+      type: object
+      required:
+        - id
+        - fullName
+        - email
+        - role
+      properties:
+        id:
+          type: string
+          format: uuid
+        fullName:
+          type: string
+          example: Ardit Hoxha
+        email:
+          type: string
+          format: email
+          example: ardit@example.com
+        role:
+          type: string
+          enum: [buyer, seller, agent, admin]
+
+    RegisterRequest:
+      type: object
+      required:
+        - fullName
+        - email
+        - password
+        - role
+      properties:
+        fullName:
+          type: string
+          minLength: 2
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 8
+        role:
+          type: string
+          enum: [buyer, seller, agent]
+
+    LoginRequest:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+
+    AuthResponse:
+      type: object
+      required:
+        - accessToken
+        - tokenType
+        - expiresIn
+        - user
+      properties:
+        accessToken:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+        tokenType:
+          type: string
+          example: Bearer
+        expiresIn:
+          type: integer
+          example: 3600
+        user:
+          $ref: '#/components/schemas/User'
+
+    Property:
+      type: object
+      required:
+        - id
+        - title
+        - city
+        - neighborhood
+        - price
+        - propertyType
+        - sizeM2
+        - rooms
+        - latitude
+        - longitude
+        - pricingStatus
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+          example: 2-bedroom apartment near city center
+        city:
+          type: string
+          example: Durrës
+        neighborhood:
+          type: string
+          example: Plazh
+        address:
+          type: string
+          example: Rruga Pavaresia
+        price:
+          type: number
+          format: float
+          minimum: 0
+          example: 125000
+        currency:
+          type: string
+          example: EUR
+        propertyType:
+          type: string
+          enum: [apartment, house, villa, land, commercial]
+        sizeM2:
+          type: number
+          format: float
+          minimum: 0
+          example: 92.5
+        rooms:
+          type: integer
+          minimum: 0
+          example: 3
+        bathrooms:
+          type: integer
+          minimum: 0
+          example: 1
+        floor:
+          type: integer
+          minimum: 0
+          example: 4
+        latitude:
+          type: number
+          format: double
+          minimum: -90
+          maximum: 90
+          example: 41.3236
+        longitude:
+          type: number
+          format: double
+          minimum: -180
+          maximum: 180
+          example: 19.4548
+        pricingStatus:
+          type: string
+          enum: [underpriced, fair, overpriced]
+        estimatedValue:
+          type: number
+          format: float
+          minimum: 0
+          example: 119000
+        createdAt:
+          type: string
+          format: date-time
+
+    PropertyCreateRequest:
+      type: object
+      required:
+        - title
+        - city
+        - neighborhood
+        - price
+        - propertyType
+        - sizeM2
+        - rooms
+        - latitude
+        - longitude
+      properties:
+        title:
+          type: string
+        city:
+          type: string
+        neighborhood:
+          type: string
+        address:
+          type: string
+        price:
+          type: number
+          format: float
+          minimum: 0
+        currency:
+          type: string
+          default: EUR
+        propertyType:
+          type: string
+          enum: [apartment, house, villa, land, commercial]
+        sizeM2:
+          type: number
+          format: float
+          minimum: 0
+        rooms:
+          type: integer
+          minimum: 0
+        bathrooms:
+          type: integer
+          minimum: 0
+        floor:
+          type: integer
+          minimum: 0
+        latitude:
+          type: number
+          format: double
+          minimum: -90
+          maximum: 90
+        longitude:
+          type: number
+          format: double
+          minimum: -180
+          maximum: 180
+
+    PropertyUpdateRequest:
+      allOf:
+        - $ref: '#/components/schemas/PropertyCreateRequest'
+
+    MapProperty:
+      type: object
+      required:
+        - id
+        - title
+        - price
+        - latitude
+        - longitude
+        - pricingStatus
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        city:
+          type: string
+        price:
+          type: number
+          format: float
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        pricingStatus:
+          type: string
+          enum: [underpriced, fair, overpriced]
+
+    PropertyComparison:
+      type: object
+      properties:
+        property1:
+          $ref: '#/components/schemas/Property'
+        property2:
+          $ref: '#/components/schemas/Property'
+        comparisonSummary:
+          type: object
+          properties:
+            priceDifference:
+              type: number
+              format: float
+            sizeDifferenceM2:
+              type: number
+              format: float
+            betterValuePropertyId:
+              type: string
+              format: uuid
+
+    PriceEstimateRequest:
+      type: object
+      required:
+        - city
+        - neighborhood
+        - propertyType
+        - sizeM2
+        - rooms
+        - latitude
+        - longitude
+      properties:
+        city:
+          type: string
+        neighborhood:
+          type: string
+        propertyType:
+          type: string
+          enum: [apartment, house, villa, land, commercial]
+        sizeM2:
+          type: number
+          format: float
+          minimum: 0
+        rooms:
+          type: integer
+          minimum: 0
+        bathrooms:
+          type: integer
+          minimum: 0
+        floor:
+          type: integer
+          minimum: 0
+        latitude:
+          type: number
+          format: double
+          minimum: -90
+          maximum: 90
+        longitude:
+          type: number
+          format: double
+          minimum: -180
+          maximum: 180
+
+    PriceEstimateResponse:
+      type: object
+      required:
+        - estimatedPrice
+        - currency
+        - pricingStatus
+      properties:
+        estimatedPrice:
+          type: number
+          format: float
+          example: 118500
+        currency:
+          type: string
+          example: EUR
+        pricingStatus:
+          type: string
+          enum: [underpriced, fair, overpriced]
+        confidenceScore:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          example: 0.84
+
+    PaginatedPropertiesResponse:
+      type: object
+      required:
+        - items
+        - page
+        - limit
+        - total
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+        page:
+          type: integer
+          example: 1
+        limit:
+          type: integer
+          example: 10
+        total:
+          type: integer
+          example: 245
