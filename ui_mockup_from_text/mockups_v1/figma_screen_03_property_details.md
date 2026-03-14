@@ -1,5 +1,6 @@
 # figma_screen_03_property_details.md
 
+
 Design the complete interface for "Property Details Screen" in the context of "Property Pulse Albania".
 
 Task:
