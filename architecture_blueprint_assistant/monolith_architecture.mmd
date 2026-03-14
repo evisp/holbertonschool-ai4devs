@@ -1,17 +1,40 @@
-graph TD
-  A[Mobile App<br/>React Native] --> B[Backend Monolith]
-  C[PWA Web] --> B
-  
-  B --> D[Authentication<br/>JWT + Roles]
-  B --> E[Task Matching<br/>2km Search]
-  B --> F[Chat Module<br/>WebSocket]
-  B --> G[Points Engine<br/>Leaderboards]
-  B --> H[Verification<br/>Photo Upload]
-  B --> I[Notifications<br/>Push Service]
-  
-  B --> J[(PostgreSQL<br/>Users/Tasks/Chats/Points)]
-  
-  K[Google Maps API] --> E
-  
-  style B fill:#ffebee
-  style J fill:#fff3e0
+flowchart TB
+    user([Users]) --> browser[Web Browser]
+    browser --> frontend[Frontend Interface]
+
+    subgraph monolith[ ]
+        direction TB
+
+        frontend --> backend[Backend Application]
+
+        subgraph modules[  ]
+            direction LR
+            listings[Property Listings]
+            map[Map and Location]
+            pricing[Price Estimation]
+            compare[Comparison and Value]
+            chat[Chat Assistant<br/>Optional]
+        end
+
+        backend --> listings
+        backend --> map
+        backend --> pricing
+        backend --> compare
+        backend --> chat
+
+        backend --> database[(Central Database)]
+    end
+
+    classDef actor fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0f172a;
+    classDef ui fill:#ecfeff,stroke:#0891b2,stroke-width:2px,color:#083344;
+    classDef app fill:#fff7ed,stroke:#f97316,stroke-width:2px,color:#431407;
+    classDef mod fill:#f5f3ff,stroke:#8b5cf6,stroke-width:1.5px,color:#2e1065;
+    classDef data fill:#ecfdf5,stroke:#16a34a,stroke-width:2px,color:#052e16;
+    classDef group fill:#f8fafc,stroke:#94a3b8,stroke-width:1.5px,color:#0f172a;
+
+    class user,browser actor;
+    class frontend ui;
+    class backend app;
+    class listings,map,pricing,compare,chat mod;
+    class database data;
+    class monolith,modules group;
