@@ -32,8 +32,6 @@
 1. Manual test writing still takes time, especially for small utilities and new features.
 2. Repetitive project setup slows down new work, especially when switching between Python and full-stack tasks.
 3. Debugging is slower than it should be because it still depends on manual reruns and checking terminal output.
-4. AI suggestions are more useful when the file already has enough context, so weak prompts reduce quality.
-5. Documentation and cleanup after implementation are still partly manual.
 
 ## Productivity Metrics
 
