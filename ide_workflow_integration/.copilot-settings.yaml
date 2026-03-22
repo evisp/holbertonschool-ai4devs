@@ -1,0 +1,109 @@
+project:
+  ide: "Visual Studio Code"
+  environment: "WSL2"
+  primary_language: "python"
+  additional_languages:
+    - "javascript"
+    - "typescript"
+    - "html"
+    - "css"
+    - "json"
+    - "bash"
+
+ai_assistant:
+  provider: "GitHub Copilot"
+  chat: true
+  inline_suggestions: true
+  goal: "practical, clean, reviewable code"
+
+languages:
+  python:
+    style_guide: "black"
+    type_hints: true
+    testing_framework: "pytest"
+    docstrings: true
+    rules:
+      - "Prefer simple, readable functions"
+      - "Use descriptive names"
+      - "Avoid unnecessary abstractions"
+      - "Prefer small testable units"
+      - "Handle errors clearly"
+
+  javascript:
+    style_guide: "eslint-friendly"
+    semicolons: true
+    modern_syntax: true
+    rules:
+      - "Prefer clear and maintainable code"
+      - "Use descriptive variable names"
+      - "Keep functions focused"
+      - "Avoid deeply nested logic"
+
+  typescript:
+    style_guide: "strict and readable"
+    strict_typing: true
+    semicolons: true
+    rules:
+      - "Prefer explicit types"
+      - "Avoid any unless necessary"
+      - "Use interfaces or types for structured data"
+      - "Keep code easy to refactor"
+
+  html:
+    semantic_markup: true
+    accessibility: true
+    rules:
+      - "Use semantic elements"
+      - "Keep structure simple"
+      - "Prefer accessibility-friendly markup"
+
+  css:
+    maintainable_structure: true
+    rules:
+      - "Keep selectors simple"
+      - "Avoid unnecessary nesting"
+      - "Prefer readable class names"
+
+  json:
+    formatting: "prettier"
+    rules:
+      - "Keep structure valid and clean"
+
+  bash:
+    rules:
+      - "Prefer safe commands"
+      - "Use clear variable names"
+      - "Avoid destructive commands unless explicit"
+
+workflows:
+  code_review:
+    enabled: true
+    focus_areas:
+      - "correctness"
+      - "readability"
+      - "security"
+      - "performance"
+      - "edge_cases"
+    behavior:
+      - "Flag risky logic"
+      - "Suggest practical improvements"
+      - "Prefer small fixes over large rewrites"
+
+  doc_generator:
+    enabled: true
+    outputs:
+      - "function_docstrings"
+      - "module_summaries"
+      - "setup_notes"
+      - "usage_examples"
+    behavior:
+      - "Keep documentation concise"
+      - "Match the implementation"
+      - "Prefer clear examples"
+
+defaults:
+  response_style: "concise"
+  explain_before_complex_code: true
+  prefer_project_conventions: true
+  avoid_overengineering: true
+  ask_for_missing_context: true
