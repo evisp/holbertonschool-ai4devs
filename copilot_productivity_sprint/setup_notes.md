@@ -1,84 +1,76 @@
+# setup_notes.md
+
 ## Objective
 
-Prepare my IDE and AI coding assistant for testing and project work.
+Prepare Visual Studio Code and GitHub Copilot for AI-assisted development and project testing.
 
 ## Environment
 
-- Operating System: [e.g. Ubuntu 24.04 / macOS / Windows 11]
-- IDE: [e.g. VS Code / IntelliJ IDEA / PyCharm]
-- IDE Version: [fill in]
-- Programming Language(s): [fill in]
-- Project Folder: [fill in]
+- IDE: Visual Studio Code
+- Development environment: WSL2
+- Primary language: Python
+- Additional languages: JavaScript, TypeScript, HTML, CSS, JSON, Bash
+- AI assistant: GitHub Copilot
+- AI chat tool: GitHub Copilot Chat
 
-## AI Assistant
+## Tool Versions
 
-- Tool Name: GitHub Copilot
-- Assistant Type: IDE-based AI coding assistant
-- Account Used: [GitHub account or school account]
-- Subscription / Access: [fill in]
+Record the exact installed versions from the local machine.
 
-## Extensions / Plugins Installed
+- VS Code: `1.112.0`
+- WSL: `2.0`
+- Python: `3.10.12`
+- pip: `22.0.2`
+- Node.js: `v24.13.0`
+- npm: `11.6.2`
+- Git: `2.34.1`
 
-- GitHub Copilot — Version: [fill in]
-- GitHub Copilot Chat — Version: [fill in]
-- Language extension(s) — Version: [fill in]
-- Linter / formatter extension(s) — Version: [fill in]
-- Other useful extensions — Version: [fill in]
+## Extensions Installed
+
+- GitHub Copilot
+- GitHub Copilot Chat
+- Remote - WSL
+- Python
+- Pylance
+- Python Debugger
+- ESLint
+- Prettier - Code formatter
+- Docker
 
 ## Setup Steps
 
-1. Installed the IDE.
-2. Confirmed the IDE version.
-3. Opened the extensions or plugins marketplace.
-4. Installed the GitHub Copilot extension.
-5. Installed the GitHub Copilot Chat extension.
-6. Signed in with my GitHub account.
-7. Authorized GitHub Copilot in the IDE.
-8. Installed language-specific extensions needed for the project.
-9. Installed code quality tools such as linter and formatter extensions.
-10. Restarted the IDE if required.
-11. Opened a test project or source file.
-12. Verified that AI suggestions appeared in the editor.
-13. Verified that chat or assistant features were available in the IDE.
+1. Installed Visual Studio Code on Windows.
+2. Installed and enabled WSL2.
+3. Opened the project from WSL using `code .`.
+4. Installed the **Remote - WSL** extension.
+5. Confirmed VS Code is running in a WSL window.
+6. Installed **GitHub Copilot**.
+7. Installed **GitHub Copilot Chat**.
+8. Signed in with GitHub inside VS Code.
+9. Enabled Copilot suggestions and Copilot Chat.
+10. Installed the **Python** extension.
+11. Installed **Pylance**.
+12. Installed **Python Debugger**.
+13. Installed **ESLint**.
+14. Installed **Prettier - Code formatter**.
+15. Installed **Docker** for container-related workflows.
+16. Selected the Python interpreter inside WSL.
+17. Verified Python runs correctly in the integrated terminal.
+18. Verified Copilot suggestions appear in code files.
+19. Verified Copilot Chat works inside VS Code.
 
-## Optional Project Configuration
+## Basic Workspace Configuration
 
-- Repository custom instructions file added: [yes / no]
-- File path used: `.github/copilot-instructions.md`
-- Notes:
-  - [Add project conventions here]
-  - [Add testing commands here]
-  - [Add formatting or linting rules here]
+Created `.vscode/settings.json` with a simple AI-ready setup:
 
-## Verification
-
-### Suggestion test
-- Created or opened a source file.
-- Wrote a short comment describing a function to implement.
-- Confirmed that the assistant suggested code inline.
-
-### Chat test
-- Opened the chat panel or assistant window.
-- Asked for help with a small coding task.
-- Confirmed that the assistant responded correctly.
-
-## Versions Summary
-
-| Tool | Version |
-|------|---------|
-| IDE | [fill in] |
-| GitHub Copilot | [fill in] |
-| GitHub Copilot Chat | [fill in] |
-| Language Extension | [fill in] |
-| Linter / Formatter | [fill in] |
-
-## Notes
-
-- The setup completed successfully: [yes / no]
-- Problems encountered: [describe briefly]
-- Fixes applied: [describe briefly]
-- Remaining issues: [describe briefly]
-
-## Result
-
-The IDE and AI assistant are installed, configured, and ready for testing.
+```json
+{
+  "editor.formatOnSave": true,
+  "files.trimTrailingWhitespace": true,
+  "python.defaultInterpreterPath": "/usr/bin/python3",
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
+}
