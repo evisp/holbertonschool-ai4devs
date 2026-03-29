@@ -1,4 +1,4 @@
-from jquery_selector import JQuerySelector
+from multi_language_code_generator.reference.log_analyzer import JQuerySelector
 
 def test_div_class():
     js = JQuerySelector()
