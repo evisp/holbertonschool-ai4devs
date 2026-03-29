@@ -1,31 +1,31 @@
 # AI Explanations - jQuery Complex Sections
 
-## Section 1 – src/core/init.js (Core Constructor)
-- **Plain English**: Creates the main jQuery object ($) that wraps DOM elements, plain objects, or arrays into a collection for manipulation.
-- **Pattern**: Overloaded constructor with multiple code paths for different input types (selectors, elements, HTML strings).
-- **Issues**: Legacy browser detection scattered; hard to follow branching logic.
-- **Improvements**: Refactor into strategy pattern with clear input validators.
+## Core Constructor (src/core/init.js)
+- **Plain English**: Builds the main `$()` function that accepts selectors, elements, or HTML to create manipulable collections.
+- **Pattern**: Single constructor handles 8+ input types via cascading type checks and fallbacks.
+- **Issues**: Deep nesting obscures main path; scattered legacy browser sniffing.
+- **Improvements**: Extract input validation to factory methods; use TypeScript unions for type safety.
 
-## Section 2 – src/traversing.js (Selector Chaining)  
-- **Plain English**: Enables method chaining like $(el).find().filter().addClass() by returning new jQuery collections.
-- **Pattern**: Each traversal method clones the current collection and applies transformations.
-- **Issues**: Deep nesting creates performance bottlenecks; memory leaks from unreleased references.
-- **Improvements**: Add explicit cleanup hooks; use WeakMaps for temporary state.
+## Traversal Engine (src/traversing.js)  
+- **Plain English**: Powers `.find()`, `.filter()`, `.closest()` by transforming collections without DOM queries.
+- **Pattern**: Immutable collection cloning + array-like filtering in pure JS.
+- **Issues**: Copies create GC pressure; no short-circuit optimization for empty sets.
+- **Improvements**: Generator-based traversal; memoization for repeated operations.
 
-## Section 3 – src/attributes/classes.js (Attribute Handling)
-- **Plain English**: Normalizes attribute access across browsers (prop vs attr distinction).
-- **Pattern**: Extensive browser feature detection before operations.
-- **Issues**: Bloated with IE6-8 shims irrelevant in 2026; inconsistent API surface.
-- **Improvements**: Remove legacy browser code; standardize on native APIs.
+## Attribute Normalization (src/attributes/classes.js)
+- **Plain English**: Ensures `.attr()` vs `.prop()` works consistently across browsers with different DOM behaviors.
+- **Pattern**: Runtime browser feature detection before each attribute operation.
+- **Issues**: 100+ lines of IE6-11 shims; truthy/falsy inconsistencies.
+- **Improvements**: Proxy-based attribute store; drop IE shims entirely for v4+.
 
-## Section 4 – src/event.js (Event System)
-- **Plain English**: Unified event handling that dispatches native events through jQuery handlers.
-- **Pattern**: Complex delegation with bubbling simulation for detached elements.
-- **Issues**: Callback hell from nested event phases; difficult to debug event flow.
-- **Improvements**: Modern event target APIs; Promise-based event chains.
+## Event Delegation System (src/event.js)
+- **Plain English**: Routes native DOM events through jQuery's handler stack with synthetic bubbling.
+- **Pattern**: Hierarchical handler arrays with phase management (capture/target/bubble).
+- **Issues**: Event handler memory leaks; complex debugging without devtools integration.
+- **Improvements**: WeakMap for handler storage; async iterator for event phases.
 
-## Section 5 – src/effects.js (Animation Queue)
-- **Plain English**: Manages multiple animations on same element via FIFO queue system.
-- **Pattern**: Properties object drives tweening with easing functions.
-- **Issues**: Timer-based polling inefficient; conflicts with CSS transitions.
-- **Improvements**: requestAnimationFrame; defer to CSS animations when possible.
+## Animation Queue (src/effects.js)
+- **Plain English**: Coordinates multiple simultaneous animations per element using deferred promises.
+- **Pattern**: Per-element FIFO queue with easing math and timer coordination.
+- **Issues**: setInterval polling wastes CPU; conflicts with CSS transitions/animations.
+- **Improvements**: requestAnimationFrame loops; detect and defer to CSS transitions automatically.
